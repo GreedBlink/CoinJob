@@ -16,6 +16,10 @@ import plotly.graph_objs as go
 import plotly.figure_factory as ff
 py.init_notebook_mode(connected=True)
 
+def connection_sql():
+    cnx = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
+            host='77.104.156.92',database='henriqu2_storageCoin')
+    return(cnx)
 
 
 conn = connection_sql()
