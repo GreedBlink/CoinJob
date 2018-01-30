@@ -87,18 +87,19 @@ class capturador(object):
             return(allcoin)
                   
             
-def salva_banquinho(data1,symbol):
-            conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
-            host='77.104.156.92',database='henriqu2_storageCoin')
-            cursor = conn.cursor()
-            for i in range(len(data1.datetime)):    
-                cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(data1.datetime[i]) +'",'+str(data1.timestamp[i]) + ','+str(data1.open[i]) + ',' +str(data1.high[i]) + ',' + str(data1.close[i]) + ',' + str(data1.low[i]) + ',' +str(data1.volume[i]) + ',"' + str(symbol) + '")')
-            conn.commit()
-    
 
-c = capturador(360,'LTC/BTC','1d')
-df = c.get_allcoin_captura()
-salva_banquinho(df,'LTC/BTC')
+
+btg = capturador(360,'BTG/BTC','1d')
+eth = capturador(360,'ETH/BTC','1d')
+bcd = capturador(360,'BCD/BTC','1d')
+
+df1 = btg.get_allcoin_captura()
+df2 = eth.get_allcoin_captura()
+df3 = bcd.get_allcoin_captura()
+
+salva_banquinho(df1,'BTG/BTC')
+salva_banquinho(df2,'ETH/BTC')
+salva_banquinho(df3,'BCD/BTC')
 
 
 
