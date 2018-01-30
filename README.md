@@ -1,5 +1,5 @@
-# CoinJob 
-Trabalho do curso de Verão 2018 ![](https://gamecredits.com/wp-content/uploads/2017/08/allcoin.png)
+# CryptoMarketAnalysis  ![](images/allcoin_logo.png)
+## Trabalho do curso de Verão 2018 
 
   - Autor: Bianca Gonçalves
   - Professor: Renato Rocha e Flavio Coelho
