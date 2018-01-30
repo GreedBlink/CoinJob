@@ -38,7 +38,7 @@ Estando o banco online, não há necessidade de recriar o storage toda vez que o
 
 
 
-##### Dependencias para rodar os códigos
+##### Dependências para rodar os códigos
 
   - bokeh
   - numpy
