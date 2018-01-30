@@ -1,4 +1,4 @@
-# CryptoMarketAnalysis  ![](images/allcoin_logo.png)
+# CryptoMarketAnalysis  ![](https://www.allcoin.com/Content/image/allcoin_logo02.png)
 ## Trabalho do curso de Verão 2018 
 
   - Autor: Bianca Gonçalves
