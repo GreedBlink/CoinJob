@@ -135,31 +135,31 @@ $(document).ready(function () {
 <div id="estrutura-do-trabalho" class="section level3">
 <h3>Estrutura do trabalho</h3>
 <div id="obtendo-os-dados" class="section level4">
-<h4>Obtendo os dados</h4>
-<p>Escolhida a exchange <code>Allcoin</code>, os dados são obtidos através da biblioteca <code>ccxt</code></p>
+<h4>1 - Obtendo os dados</h4>
+<p>Escolhida a exchange <strong><code>Allcoin</code></strong>, os dados são obtidos através da biblioteca <strong><code>ccxt</code></strong></p>
 <ul>
-<li><p><code>src/capturador.py</code>: possui uma classe chamada <code>capturador</code> que exectua a extração baseada nos seguintes argumentos:</p>
+<li><p><strong><code>src/capturador.py</code></strong>: possui uma classe chamada <strong><code>capturador</code></strong> que exectua a extração baseada nos seguintes argumentos:</p>
 <ul>
-<li><code>max_dias</code>: Quanditade de dias até a data atual</li>
-<li><code>symbol</code>: Tipo de moeda que se deseja obter os valores</li>
-<li><code>time_frame</code>: intervalo de tempo dos dados (ex.: 5 minutos)</li>
+<li><strong><code>max_dias</code></strong>: Quanditade de dias até a data atual</li>
+<li><strong><code>symbol</code></strong>: Tipo de moeda que se deseja obter os valores</li>
+<li><strong><code>time_frame</code></strong>: intervalo de tempo dos dados (ex.: 5 minutos)</li>
 </ul></li>
 </ul>
 </div>
 <div id="banco-de-dados-mysql" class="section level4">
-<h4>banco de dados (MySQL)</h4>
+<h4>2 - banco de dados (MySQL)</h4>
 <p>Com o banco de dados online, uma tabela foi criada para os dados da exchange escolhida. Com uma chave primária composta (date e mercado). É possível armazenar em um unico lugar, dados de diferentes moedas e time frames sem duplicatas.</p>
 <p>Estando o banco online, não há necessidade de recriar o storage toda vez que o script for rodado em um ambiente novo.</p>
 <ul>
-<li><p><code>src/capturador.py</code>: possui uma função chamada <code>salva_banquinho</code> que armazena os dados extraídos do capturador. Argumentos:</p>
+<li><p><strong><code>src/capturador.py</code></strong>: possui uma função chamada <strong><code>salva_banquinho</code></strong> que armazena os dados extraídos do capturador. Argumentos:</p>
 <ul>
-<li><code>data1</code>: objeto com os dados da moeda</li>
-<li><code>symbol</code>: Tipo de moeda que se deseja obter os valores</li>
+<li><strong><code>data1</code></strong>: objeto com os dados da moeda</li>
+<li><strong><code>symbol</code></strong>: Tipo de moeda que se deseja obter os valores</li>
 </ul></li>
 </ul>
 </div>
 <div id="visualizacao-dos-dados-apartir-do-banco." class="section level4">
-<h4>Visualização dos dados apartir do banco.</h4>
+<h4>3 - Visualização dos dados apartir do banco.</h4>
 <div id="dependencias-para-rodar-os-codigos" class="section level5">
 <h5>Dependencias para rodar os códigos</h5>
 <ul>
