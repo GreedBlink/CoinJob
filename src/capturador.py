@@ -12,6 +12,30 @@ import ccxt
 import numpy as np
 import mysql.connector
  
+def salva_banquinho(data1,symbol):
+            conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
+            host='77.104.156.92',database='henriqu2_storageCoin')
+            cursor = conn.cursor()
+            for i in range(len(data1.datetime)):    
+                cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(data1.datetime[i]) +'",'+str(data1.timestamp[i]) + ','+str(data1.open[i]) + ',' +str(data1.high[i]) + ',' + str(data1.close[i]) + ',' + str(data1.low[i]) + ',' +str(data1.volume[i]) + ',"' + str(symbol) + '")')
+            conn.commit()
+    
+
+
+def mercados(exch = 'allcoin',moedas = ['ETH','LTC','BTG']):
+    if not exch:
+        exch = ccxt.allcoin()
+    if exch == 'allcoin':    
+        exch = ccxt.allcoin()   
+    else:
+        exch = ccxt.allcoin()   
+    markets = exch.load_markets()
+    market_pairs = list(markets.keys())
+    aux = []
+    for pair in market_pairs:
+        if (str(moedas[0]) in pair or str(moedas[1]) in pair or str(moedas[2]) in pair) and 'BTC' in pair: 
+            aux.append(pair)  
+    return(aux)       
 
 class capturador(object):
     
@@ -27,7 +51,7 @@ class capturador(object):
         self.time1 = time1
         self.symbol = symbol
         
-    
+        
   
     def get_allcoin_captura(self):
             allcoin = ccxt.allcoin()
