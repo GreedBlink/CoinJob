@@ -1,5 +1,5 @@
-# CoinJob ![](https://gamecredits.com/wp-content/uploads/2017/08/allcoin.png =100x)
-Trabalho do curso de Verão 2018
+# CoinJob 
+Trabalho do curso de Verão 2018 ![](https://gamecredits.com/wp-content/uploads/2017/08/allcoin.png)
 
   - Autor: Bianca Gonçalves
   - Professor: Renato Rocha e Flavio Coelho
