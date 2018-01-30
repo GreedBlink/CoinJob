@@ -1,4 +1,4 @@
-# CoinJob ![](https://www.allcoin.com/Content/image/allcoin_logo01.png)
+# CoinJob ![](https://www.forexbrokerz.com/files/1510845637allcoin.jpg)
 Trabalho do curso de Verão 2018
 
   - Autor: Bianca Gonçalves
