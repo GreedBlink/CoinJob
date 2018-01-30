@@ -1,4 +1,4 @@
-# CoinJob ![](https://drive.google.com/open?id=1U_4SYIZQJLVv-kQsyZsZCWJtSCvJ9YCV)
+# CoinJob ![](https://gamecredits.com/wp-content/uploads/2017/08/allcoin.png)
 Trabalho do curso de Verão 2018
 
   - Autor: Bianca Gonçalves
