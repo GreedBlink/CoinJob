@@ -42,9 +42,6 @@ class capturador(object):
 
     def __init__(self,max_dias,symbol,time_frame):
         self.time_frame = time_frame
-        #datainicio é o dias de diferenca ate o dia de hj
-        # ou seja, é a janela de dados até o dia de hj
-        #datainicio sginifica a quantidade de dias pra captura
         base = datetime.datetime.today()
         data_inicial = (base - datetime.timedelta(days=max_dias)).date()
         time1 = time.mktime(data_inicial.timetuple())
@@ -88,7 +85,43 @@ class capturador(object):
                   
             
 
-
+class db(object):
+    
+    def __init__(self,exch,symbol,datafim,datainicio,data1):
+        self.exch = exch
+        self.symbol = symbol
+        self.datafim = datafim
+        self.datainicio = datainicio
+        self.data1 = data1
+        
+    
+    def connecta():
+        conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
+            host='77.104.156.92',database='henriqu2_storageCoin')
+        return(conn)
+        
+    def save(self):
+        conn = connecta()
+        cursor = conn.cursor()
+        for i in range(len(self.data1.datetime)):    
+            cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(self.data1.datetime[i]) +'",'+str(self.data1.timestamp[i]) + ','+str(self.data1.open[i]) + ',' +str(self.data1.high[i]) + ',' + str(self.data1.close[i]) + ',' + str(self.data1.low[i]) + ',' +str(self.data1.volume[i]) + ',"' + str(self.symbol) + '")')
+            conn.commit()
+        conn.close()
+    
+    def get(self):
+        conn = connecta()
+        if not self.datainicio or not self.datafim:    
+            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"',conn)
+        elif not self.datainicio:
+            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' + 'and date <= ' + '"' + str(self.datafim) + '"',conn)
+        elif not self.datafim:
+            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' + 'and date >= ' + '"' + str(self.datainicio) + '"' ,conn)
+        else:   
+            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' +  'and date BETWEEN ' + '"' + str(self.datainicio) + '"' + ' and ' + '"' + str(self.datafim) + '"',conn)
+        conn.close()
+        return(df)
+            
+            
 btg = capturador(360,'BTG/BTC','1d')
 eth = capturador(360,'ETH/BTC','1d')
 bcd = capturador(360,'BCD/BTC','1d')
