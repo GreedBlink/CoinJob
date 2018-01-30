@@ -119,7 +119,7 @@ class db(object):
         else:   
             df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' +  'and date BETWEEN ' + '"' + str(self.datainicio) + '"' + ' and ' + '"' + str(self.datafim) + '"',conn)
         conn.close()
-        return(df)
+        return df
             
             
 btg = capturador(360,'BTG/BTC','1d')
