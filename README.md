@@ -22,7 +22,7 @@ Escolhida a exchange **`Allcoin`**, os dados são obtidos através da biblioteca
     - **`time_frame`**: intervalo de tempo dos dados (ex.: 5 minutos)
 
 
-#### 2 -  banco de dados (MySQL) 
+#### 2 -  Banco de dados (MySQL) 
 
 Com o banco de dados online, uma tabela foi criada para os dados da exchange escolhida. Com uma chave primária composta (date e mercado). É possível armazenar em um unico lugar, dados de diferentes moedas e time frames sem duplicatas. 
 
