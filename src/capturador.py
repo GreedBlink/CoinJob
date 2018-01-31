@@ -12,7 +12,13 @@ import ccxt
 import numpy as np
 import mysql.connector
  
-
+def salva_banquinho(data1,symbol):
+            conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
+            host='77.104.156.92',database='henriqu2_storageCoin')
+            cursor = conn.cursor()
+            for i in range(len(data1.datetime)):    
+                cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(data1.datetime[i]) +'",'+str(data1.timestamp[i]) + ','+str(data1.open[i]) + ',' +str(data1.high[i]) + ',' + str(data1.close[i]) + ',' + str(data1.low[i]) + ',' +str(data1.volume[i]) + ',"' + str(symbol) + '")')
+            conn.commit()
     
 
 
@@ -77,46 +83,50 @@ class capturador(object):
             allcoin = pd.DataFrame(struct_df)
             return(allcoin)
                   
-            
-
-class db(object):
-    
-    def __init__(self,exch,symbol,datafim,datainicio,data1):
-        self.exch = exch
-        self.symbol = symbol
-        self.datafim = datafim
-        self.datainicio = datainicio
-        self.data1 = data1
-        
-    
-    def connecta():
+  
+def connecta():
         conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
             host='77.104.156.92',database='henriqu2_storageCoin')
-        return(conn)
-        
-    def save(self):
-        conn = connecta()
-        cursor = conn.cursor()
-        for i in range(len(self.data1.datetime)):    
-            cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(self.data1.datetime[i]) +'",'+str(self.data1.timestamp[i]) + ','+str(self.data1.open[i]) + ',' +str(self.data1.high[i]) + ',' + str(self.data1.close[i]) + ',' + str(self.data1.low[i]) + ',' +str(self.data1.volume[i]) + ',"' + str(self.symbol) + '")')
-            conn.commit()
-        conn.close()
-    
-    def get(self):
-        conn = connecta()
-        if not self.datainicio or not self.datafim:    
-            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"',conn)
-        elif not self.datainicio:
-            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' + 'and date <= ' + '"' + str(self.datafim) + '"',conn)
-        elif not self.datafim:
-            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' + 'and date >= ' + '"' + str(self.datainicio) + '"' ,conn)
-        else:   
-            df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(self.symbol) + '"' +  'and date BETWEEN ' + '"' + str(self.datainicio) + '"' + ' and ' + '"' + str(self.datafim) + '"',conn)
-        conn.close()
-        return df
-            
-            
+        return(conn)          
 
+
+def save(data1,symbol):
+    conn = connecta()
+    cursor = conn.cursor()
+    for i in range(len(data1.datetime)):    
+        cursor.execute('insert into Allcoin(date,timestamp,open,high,close,low,volume,mercado) values("'+str(data1.datetime[i]) +'",'+str(data1.timestamp[i]) + ','+str(data1.open[i]) + ',' +str(data1.high[i]) + ',' + str(data1.close[i]) + ',' + str(data1.low[i]) + ',' +str(data1.volume[i]) + ',"' + str(symbol) + '")')
+        conn.commit()
+    conn.close()
+
+
+
+def get(symbol,datainicio = None ,datafim = None):
+    if not symbol:
+        return(print("Insira a moeda, para poder capturar os valores \n do banco!"))
+    conn = connecta()
+    if datainicio is None and datafim is None:    
+        df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(symbol) + '"',conn)
+    elif datainicio is None:
+        df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(symbol) + '"' + 'and date <= ' + '"' + str(datafim) + '"',conn)
+    elif datafim is None:
+        df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(symbol) + '"' + 'and date >= ' + '"' + str(datainicio) + '"' ,conn)
+    else:   
+        df =  pd.read_sql('Select * from Allcoin where mercado =' + '"' + str(symbol) + '"' +  'and date BETWEEN ' + '"' + str(datainicio) + '"' + ' and ' + '"' + str(datafim) + '"',conn)
+    conn.close()
+    return df
+            
+            
+#btg = capturador(360,'BTG/BTC','1d')
+#eth = capturador(360,'ETH/BTC','1d')
+#bcd = capturador(360,'BCD/BTC','1d')
+
+#df1 = btg.get_allcoin_captura()
+#df2 = eth.get_allcoin_captura()
+#df3 = bcd.get_allcoin_captura()
+
+#salva_banquinho(df1,'BTG/BTC')
+#salva_banquinho(df2,'ETH/BTC')
+#salva_banquinho(df3,'BCD/BTC')
 
 
 
