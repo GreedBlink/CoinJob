@@ -75,8 +75,8 @@ class capturador(object):
                   
   
 def connecta():
-        conn = mysql.connector.connect(user='henriqu2_bianca', password='verao2018',
-            host='77.104.156.92',database='henriqu2_storageCoin')
+        conn = mysql.connector.connect(user='', password='',
+            host='',database='')
         return(conn)          
 
 
