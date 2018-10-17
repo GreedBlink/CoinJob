@@ -12,6 +12,7 @@ CREATE TABLE Allcoin(
     mercado CHARACTER(255),
     PRIMARY KEY(date,mercado)
 );
+
 CREATE TABLE Bitmex(
 	date CHARACTER(255) NOT NULL,
     timestamp REAL NOT NULL,
@@ -23,3 +24,7 @@ CREATE TABLE Bitmex(
     mercado CHARACTER(255),
     PRIMARY KEY(date,mercado)
 );
+
+
+select * from Bitmex limit = 30;
+select * from Allcoin limit = 30;
